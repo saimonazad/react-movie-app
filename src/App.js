@@ -4,9 +4,9 @@ import Header from './components/HeaderComponent/Header';
 import Search from './components/SearchCompoent/Search';
 import Movie from './components/MovieComponent/Movie';
 
+var API_KEY = process.env.REACT_APP_API_KEY;
 
-
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=batman&apikey=cfe50553";
+const MOVIE_API_URL = `https://www.omdbapi.com/?s=batman&apikey=${API_KEY}`;
 const initialState = {
   loading: true,
   movies: [],
@@ -54,7 +54,7 @@ function App() {
 
   const search = searchValue => {
     dispatch({ type: 'SEARCH_MOVIES_REQUEST' });
-    fetch(`https:///www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
+    fetch(`https:///www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}`)
       .then(response => response.json())
       .then(jsonResponse => {
         if (jsonResponse.Response === 'True') {
